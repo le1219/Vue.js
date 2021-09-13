@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+</head>
+
+<body>
+
+    <script>
+        function createObj(key, value) {
+            const obj = {
+                [key]: value,
+            };
+
+            return obj;
+        }
+        const preson = createObj('name', 'john');
+        // {
+        //     name:'john',
+        // }
+        const cat = createObj('legs', '4');
+        // {
+        //     legs:'4',
+        // }
+
+        //縮寫ES6
+        const option = {
+            name: 'options',
+            levle: 10,
+            created() {
+                //就不用寫created function(){}
+            },
+            mounted() {
+
+            },
+            beforeCreate() {
+                bbbaaawwwiii
+            },
+        }
+    </script>
+</body>
+
+</html>

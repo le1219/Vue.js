@@ -1,0 +1,95 @@
+VUE屬性
+el
+data
+methods
+computed
+watch
+
+v-html="XXX"
+data{
+    XXX:,
+},
+}
+
+
+v-bind:
+v-bind:checked === :checked
+
+把資料綁定到屬性
+
+v-on:click 
+v-on:mouseover
+v-on:load
+
+v-on === @click
+監聽DOM改變資料
+
+<p>{{count*4}}</p>
+{{ }} 和 v-bink都可以 用作表達 
+<input type="checkbox" v-bind:checked="count%2===0">
+
+v-model雙向綁定
+ <input type="text" v-model="both">
+        {{both}}
+         data: {
+                text: 'YO',
+                both: 'HAPPY'
+            },
+
+instance實例
+class類別
+Example instance實例
+const vm = new Vue({
+
+})
+Template 可直接無視html內屬性
+ const vm = new Vue({
+            el: '#app',
+            template: '<div><h2> {{msg}} {{msg}}</h2></div>',
+            // el: document.getElementById('app'),
+            data: {
+                msg: 'HELLO111'
+            }
+        })
+
+computed
+get 一定要return
+set
+
+
+--------------
+watch
+監聽 data and computed 每個變動
+v-model="value"
+data:{
+    value
+}
+watch:{
+    value(val,oldVal)
+}
+value名字要一樣
+也可宣告成物件
+watch：{
+    value:{
+        handler(val,oldVal){
+             console.log(`${oldVal} -> ${val}`)
+        }
+        deep:true,
+        //deep偵查整列有沒有改變
+    }
+}
+
+------------------------
+生命週期 lifecycle
+4step
+before create -> created
+before mounte -> mounted
+before update -> updated
+before destory -> destoryed
+new Vue -> 初始化 -> before create -> created ->
+    if      看看有沒有el -> 也沒有 mounte //不執行
+    else    看看有沒有templatel
+->before mount 掛載後就跑到 mounted
+-> before update ->updated
+->before destory -> destoryed
+跑完以後就摧毀它

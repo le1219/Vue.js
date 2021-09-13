@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 單向綁定 -->
+        <div>
+            <h2>{{text}}</h2>
+            <input type="text" :value="text">
+        </div>
+        <!-- 雙向綁定 -->
+        <div>
+            <h2> {{both}}</h2>
+            <input type="text" v-model="both">
+        </div>
+
+
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                text: 'YO',
+                both: 'HAPPY'
+            },
+
+        })
+
+    </script>
+</body>
+
+</html>

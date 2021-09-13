@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="number" v-model="a">
+        +
+        <input type="number" v-model="b">
+        =
+        <input type="number" v-model="c">
+        <br>
+        {{a}}+{{b}} = {{c}}
+    </div>
+
+    <script>
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                a: 0,
+                b: 0,
+            },
+            computed: {
+                c: {
+                    get() {
+                        return Number(this.a) + Number(this.b);
+                    },
+                    set(val) {
+                        this.b = Number(val) - Number(this.a)
+                    }
+                }
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

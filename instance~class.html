@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <div class="app">{{aa}}</div>
+    <div class="app">{{aa}}</div>
+    <div class="app">{{aa}}</div>
+    <!-- class 無效 只會對應到一個{{}} -->
+    <script>
+        //mount 掛載
+        const vm = new Vue({
+            el: '#app',
+            template: '<div><h2> {{msg}} {{msg}}</h2></div>',
+            // el: document.getElementById('app'),
+            data: {
+                msg: 'HELLO111'
+            }
+        })
+        // vm.$mount('#app');
+        //  vm.$mount('document.getElementById('app')');
+
+
+        const classO = new Vue({
+            el: '.app',
+            data: {
+                aa: 'copyme'
+            }
+        })
+    </script>
+</body>
+
+</html>

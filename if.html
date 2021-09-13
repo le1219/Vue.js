@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.11/vue.cjs.js" ></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <span v-if="see">Now you see me</span>
+        <span v-else>dismiss</span>
+        <div v-for="rr in a">{{rr}}</div>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                see: true,
+                //see與上面綁定了 1）所以true 就出現 false 消失
+                // 2)有else see：false 就顯示dismiss
+                a: ['rr要等於 {{}}',
+                    'a要等於in a',
+                    '3']
+
+
+            },
+
+        })
+    </script>
+</body>
+
+</html>

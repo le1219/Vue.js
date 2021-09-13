@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <span v-once>{{message}}</span>
+        <br>
+        <span>{{message}}</span>
+        <br>
+        <button v-on:click="append">APPEND</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'HELLO WORLD'
+            },
+            methods: {
+                append() {
+                    this.message += '!';
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

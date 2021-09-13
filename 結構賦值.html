@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+</head>
+
+<body>
+
+    <script>
+        const nums = [1, 2, 3];
+        //那第一個數字
+        const first = num[0];
+        const second = num[0];
+        //上等於下
+        const [first, second] = nums;
+        //   也可以
+        let first;
+        let second;
+        [first, second] = nums;
+        const result = first * second;
+
+        //
+        const nums = [10, 20];
+        //不足以3個數 可以先預設third
+        const [first, second, third = 30] = nums;
+        //也可以只取其中一個 用','分割
+        const [, second,] = nums;
+
+
+        //變數交換
+        let a = 1;
+        let b = 2;
+        //直接交換
+        [a, b] = [b, a];
+
+        //改變整列
+        const nums = [1, 2, 3, 4];
+        const [first, ...others] = nums;
+        first === 1
+        others = [2, 3, 4]
+
+        //直接改變 物件 結構
+        const point = {
+            x: 100,
+            y: 150,
+        }
+        const arr[];
+        const obj{ };
+        const { x, y } = point;
+    </script>
+</body>
+
+</html>

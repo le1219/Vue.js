@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <input type="checkbox" v-bind:checked="selected"> -->
+        <!-- <button v-on:click="toggle">TOGGLE</button> -->
+        <p>{{count*4}}</p>
+        <!-- {{ }} 和 v-bink都可以 用作表達 -->
+        <input type="checkbox" v-bind:checked="count%2===0">
+        <!-- 雙數就click -->
+        <button v-on:click="add">ADD</button>
+    </div>
+
+    <script>
+        // new Vue({
+        //     el: '#app',
+        //     data: {
+        //         selected: true,
+        //     },
+        //     methods: {
+        //         toggle() {
+        //             this.selected = !this.selected;
+        //         }
+        //     }
+        // })
+        new Vue({
+            el: '#app',
+            data: {
+                count: 0,
+            },
+            methods: {
+                add() {
+                    this.count += 1;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
