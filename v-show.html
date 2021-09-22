@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.11/vue.cjs.js" ></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        #app {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="checked">
+        <!-- <h1 v-if="checked">努力每一天</h1> -->
+        <!-- v-show後面沒有v-else 不能加template 因為template是假的v-show看不懂template-->
+
+        <h1 v-show="checked">努力每一天</h1>
+
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                checked: false,
+            },
+
+        })
+    </script>
+</body>
+
+</html>

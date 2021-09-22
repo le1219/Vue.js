@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.11/vue.cjs.js" ></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="num in nums" class="ca">
+                {{num}}
+            </li>
+        </ul>
+        <button @click="action">HERE</button>
+        <ul>
+            <li v-for="(num1,key) in nu">
+                {{key}}:{{num1}}
+            </li>
+        </ul>
+        <button @click="showin">HERE</button>
+
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                nums: [
+                    '1',
+                    '2',
+                    '3',
+                    '4',
+                    '5',
+                    '6',
+                    '7'
+                ],
+                nu: {
+                    x: 10,
+                    y: 20,
+                },
+
+            },
+            methods: {
+                action() {
+                    // this.nums.push(this.nums.length + 1);
+                    // this.nums.pop();
+                    // this.nums.shift();
+                    // this.nums.unshift(0);
+                    //(位置index,length) 
+                    // this.nums.splice(1, 2);
+                    //(位置index,length,+,+,+) 
+                    // this.nums.splice(1, 2, 9, 8, 7);
+                    // this.nums.sort();
+                    this.nums.reverse();
+
+                    //餘數為0才會顯示
+                    // this.nums = this.nums.filter(elm => (elm % 2 === 0));
+
+                    // this.nums[2]=10 無用啦 vue沒有監聽到
+                    //所以直接用splice更改
+                    // this.nums.splice(4, 1, 10);
+                    //3以後都不要
+                    // this.nums.splice(3)
+
+                },
+
+                showin() {
+                    this.$set(this.nu, 'z', 30);
+                },
+
+            },
+
+        })
+    </script>
+</body>
+
+</html>

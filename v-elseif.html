@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.11/vue.cjs.js" ></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        #app {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" v-model="checked1">
+        <input type="checkbox" v-model="checked2">
+        <!-- <h1 v-if="checked">努力每一天</h1> -->
+        <!-- 可以用template 偽html元素  -->
+        <template v-if="checked1">
+            <h1>努力每一天</h1>
+            <h4>努力每一天</h4>
+            <h5>努力每一天</h5>
+        </template>
+        <!-- if then else 一起用不可以分開 中間不可以插入任何東西 否則會無效 -->
+        <template v-else-if="checked2">
+            <h1>趕快找工作</h1>
+        </template>
+        <template v-else="checked2">
+            <h1>自強自立</h1>
+        </template>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                checked1: false,
+                checked2: false,
+            },
+
+        })
+    </script>
+</body>
+
+</html>

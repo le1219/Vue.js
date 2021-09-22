@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.11/vue.cjs.js" ></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ol>
+            <!-- :class = v-bind:class 增加屬性 element也可看到 -->
+            <li v-for="item in todo" :class="item">{{item}}</li>
+        </ol>
+        <select>
+            <!-- <option v-for="month in 12">{{month}}</option> -->
+            <!-- (month,idx)搭配:value="idx" 可：有value，value也可 :value="idx+1"-->
+            <option v-for="(month,idx) in months" :value="idx">{{month}}</option>
+        </select>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                todo: [
+                    '學習是為了走更長的路',
+                    'Vue.js',
+                    '是下一步'
+                ],
+                months: [
+                    'jan', 'feb', 'mar', 'apr', 'may'
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -93,3 +93,38 @@ new Vue -> 初始化 -> before create -> created ->
 -> before update ->updated
 ->before destory -> destoryed
 跑完以後就摧毀它
+---------------------------------------
+陣列轉元素 v-for
+ <option v-for="(month,idx) in months" :value="idx">{{month}}</option>
+ data:{
+     months: [
+                    'jan', 'feb', 'mar', 'apr', 'may'
+                ]
+ }
+ ---------------------------------------
+ 物件轉元素
+ v-for順序可能不一樣 example 用number作key 數字大於英文
+ 還是整列不會影響順序
+ pp: [
+                    { prop: 'name', value: 'CHARLEY' },
+                    { prop: 'age', value: '12' },
+                    { prop: 'add', value: 'pp 中心' },
+                ]
+ ---------------------------------------
+this.nums.push(this.nums.length + 1);
+ this.nums.pop();
+this.nums.shift();
+this.nums.unshift(0);
+//(位置index,length) 
+this.nums.splice(1, 2);
+//(位置index,length,+,+,+) 
+ this.nums.splice(1, 2, 9, 8, 7);
+ this.nums.sort();
+ this.nums.reverse();
+ this.nums = this.nums.filter(elm => (elm % 2 === 0));
+  ---------------------------------------
+  不吃
+  this.nums[2]=10 喝 this.nums.length = 3
+  這樣可以
+  this.nums.splice(4, 1, 10);          
+    this.nums.splice(3)

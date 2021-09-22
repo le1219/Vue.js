@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.2.11/vue.cjs.js" ></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!--物件 (value,key) -->
+        <!--v-for順序可能不一樣 example 用number作key 數字大於英文-->
+        <div v-for="item in pp">{{item.prop}}:{{item.value}}</div>
+    </div>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                // pp: {
+                //     name: 'CHARLEY',
+                //     id: 'c1',
+                //     age: '30',
+                //     add: 'pp 中心',
+                //     1: '我會去第一',
+                //     3: '我會去第三',
+                //     100: '我會去last',
+                // }
+                pp: [
+                    { prop: 'name', value: 'CHARLEY' },
+                    { prop: 'age', value: '12' },
+                    { prop: 'add', value: 'pp 中心' },
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>
