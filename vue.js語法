@@ -94,7 +94,7 @@ new Vue -> 初始化 -> before create -> created ->
 ->before destory -> destoryed
 跑完以後就摧毀它
 ---------------------------------------
-陣列轉元素 v-for
+陣列轉元素 v-for 
  <option v-for="(month,idx) in months" :value="idx">{{month}}</option>
  data:{
      months: [
@@ -128,3 +128,18 @@ this.nums.splice(1, 2);
   這樣可以
   this.nums.splice(4, 1, 10);          
     this.nums.splice(3)
+
+filrer() 過濾
+sort會修改原有的整列 ->所以改成 .slice().sort
+  ---------------------------------------
+  JSON
+  Example
+     const data = {
+         name : 'ELLLLL',
+         x :20,
+         y : 1, 
+     };
+     //物件轉字串
+     const dataJSON = JSON.stringify(data);
+     //字串轉資料 or 物件
+     const data2 = JSON.patse(dataJSON); 

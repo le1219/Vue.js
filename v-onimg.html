@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        .img.hide {
+            opacity: 0;
+        }
+
+        .img {
+            transition: opacity 2s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h5 v-if="loading">LOADING</h5>
+        <h5 v-else>COMPLETE</h5>
+        <img @load="loading=false" src="https://picsum.photos/400/300 " :class="imgClass">
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                loading: true,
+            },
+            computed: {
+                imgClass() {
+                    if (this.loading) {
+                        return 'img hide';
+                    }
+                    else {
+                        return 'img';
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

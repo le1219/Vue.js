@@ -1,0 +1,17 @@
+[
+    {
+        "url": "http://hk.yahoo.com",
+        "title": "香港雅虎",
+        "img": "https://s.yimg.com/cv/apiv2/twfrontpage/logo/HK_desktop_homerun@2x_new.png"
+    },
+    {
+        "url": "http://tw.yahoo.com",
+        "title": "台灣雅虎",
+        "img": "https://s.yimg.com/cv/apiv2/twfrontpage/doodle/202004_TW_desktop_homerun@2x_coronavirus.gif"
+    },
+    {
+        "url": "https://www.google.com/",
+        "title": "GOOGLE",
+        "img": "https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+    }
+]

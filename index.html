@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.10/vue.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> -->
+    <title>Document</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div v-for="lesson in lessons">
+            <img :src="lesson.img">
+            <h1>{{lesson.title}}</h1>
+            <a :href="lesson.url"></a>
+
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                lessons: [],
+            },
+            mounted() {
+                fetch('./data.json')
+                    .then(res => res.json())
+                    .then(lessons => this.lessons = lessons);
+
+            },
+
+        })
+    </script>
+</body>
+
+</html>
