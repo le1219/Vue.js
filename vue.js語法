@@ -143,3 +143,5 @@ sort會修改原有的整列 ->所以改成 .slice().sort
      const dataJSON = JSON.stringify(data);
      //字串轉資料 or 物件
      const data2 = JSON.patse(dataJSON); 
+     ---------------------------------------
+     evt.preventDefault() *** = @click.prevent

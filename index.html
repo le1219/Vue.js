@@ -12,15 +12,43 @@
         body {
             background-color: antiquewhite;
         }
+
+        a {
+            text-decoration: none;
+        }
+
+        .lesson {
+            display: inline-block;
+            width: 300px;
+            height: 200px;
+            border-radius: 8px;
+            box-shadow: 6px 6px 20px grey;
+            margin: 12px;
+            padding: 8px;
+            position: relative;
+            padding-top: 150px;
+        }
+
+        .image {
+            width: 100%;
+            height: 150px;
+            background-position: 30% center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <div v-for="lesson in lessons">
-            <img :src="lesson.img">
-            <h1>{{lesson.title}}</h1>
-            <a :href="lesson.url"></a>
+        <div v-for="lesson in lessons" class="lesson">
+            <div class="image" :style="imgStyle(lesson.img)"></div>
+            <!-- <img :src="lesson.img"> -->
+            <h5>{{lesson.title}}</h5>
+            <a :href="lesson.url">GO！</a>
 
         </div>
     </div>
@@ -31,11 +59,19 @@
             data: {
                 lessons: [],
             },
+            methods: {
+                imgStyle(img) {
+                    return {
+                        backgroundImage: `url(${img})`,
+                    };
+                },
+            },
             mounted() {
                 fetch('./data.json')
                     .then(res => res.json())
                     .then(lessons => this.lessons = lessons);
-
+                // $.getJSON('./data.json').then(Lessons => this.Lessons = Lessons)
+                // axios.get('./data.json').then(res => this.Lessons = res.data)
             },
 
         })

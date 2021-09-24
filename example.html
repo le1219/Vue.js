@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.10/vue.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> -->
+    <title>Document</title>
+    <style>
+        .box {
+            min-height: 80px;
+            min-width: 80px;
+            padding: 40px;
+            border: 2px dashed lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>evt.preventDefault()</h1>
+        <!-- .stop 停止傳出去 .self自己傳出才算 .once只執行一次 -->
+        <div class="box" @click="msg='C'">
+            <div class="box" @click.stop="msg='B'">
+                <div class="box" @click.stop="msg='A'">
+
+                </div>
+            </div>
+        </div>
+        <h1>{{msg}}</h1>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                msg: '',
+            },
+            // methods: {
+            //     setA(evt) {
+            //         evt.stopPropagation();
+            //         this.msg = 'A';
+            //     }
+            // }
+        })
+    </script>
+</body>
+
+</html>

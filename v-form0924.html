@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>text input and textarea</h1>
+        <input type="text" v-model="message" @input="setMessage">
+        <h1>{{message}}</h1>
+        <!-- 雖然可以打多行 但是下面h3並不會換行 所以可以用pre 或 css white-space:pre; -->
+        <textarea v-model="messageArea"></textarea>
+        <pre>{{messageArea}}</pre>
+        <h3>{{messageArea}}</h3>
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                message: '',
+                messageArea: '',
+            },
+            setMessage(evt) {
+                this.message = evt.target.value;
+            }
+        })
+    </script>
+</body>
+
+</html>
