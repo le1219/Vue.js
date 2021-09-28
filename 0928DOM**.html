@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <select>
+            <!-- select下只能有option所以my-component 就出不來 -->
+            <!-- ul li ***注意只有chrome可以-->
+            <!-- table ***注意只有chrome可以-->
+            <my-component>Test</my-component>
+        </select>
+        <!-- template就可以了 -->
+        <div id="app2">
+
+        </div>
+    </div>
+
+    <script>
+        Vue.component('my-component', {
+            template: '<option>Gobal Component</option',
+        });
+        new Vue({
+            el: '#app2',
+            template: '<div id="app2"><select><my-component>Test</my-component></select></div>'
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>UPLOAD照片 檔案</h1>
+    <div id="app">
+        <input type="file" @change="fileSelected">
+        <img v-if="image" :src="image">
+        <button @click="upload">UPLOAD</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            dara: {
+                image: '',
+                file: null,
+            },
+            methods: {
+                fileSelected(evt) {
+                    this.file = evt.target.files.item(0);
+                    const reader = new FileReader();
+                    reader.addEventListener('load', this.imageLoaded);
+                    reader.readAsDataURL(file);
+                },
+                imageLoaded(evt) {
+                    this.image = evt.target.result;
+                },
+                upload() {
+                    const form = new FormData();
+                    form.append(this.file, this.file.name);
+                    axios.post('/upload', form);
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h1>修飾符 MODIFIER</h1>
+        <input type="text" v-model="msg">
+        <p>{{msg}}</p>
+        <!-- 離開focus後才會顯示 -->
+        <input type="text" v-model.lazy="msg1">
+        <p>{{msg1}}</p>
+        <!-- 輸入後是字串但變成number就可以直接計算 -->
+        <input type="text" v-model.number="msg2">
+        <p>{{msg2*5}}</p>
+        <!-- 綁定進去去除空白 空格都會被trim去掉-->
+        <input type="text" v-model.trim="msg3">
+        <p>[{{msg3}}]</p>
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                msg: "",
+                msg1: "",
+                msg2: "",
+                msg3: "",
+            },
+
+        })
+    </script>
+</body>
+
+</html>
