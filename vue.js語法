@@ -145,3 +145,21 @@ sort會修改原有的整列 ->所以改成 .slice().sort
      const data2 = JSON.patse(dataJSON); 
      ---------------------------------------
      evt.preventDefault() *** = @click.prevent
+     ---------------------------------------
+     0929
+     <!-- keep-alive會保持切換後組件的內容 -->
+        <keep-alive>
+            <component :is="content"></component>
+        </keep-alive>
+
+         //名字怎麼取
+    'my-first-component' //kebab-case
+    'MyFirstComponent' //camelCase
+    'MyFirstComponent' //pascalCase
+    三種取名字方法都可以用 但在html呼叫的時候只讀kebab-case
+    但是用template直接定義 是可以的
+    template: `
+        //         <h2>
+        //             'MyFirstComponent' //pascalCase//kebab-case
+        //         </h2>
+        //     `,

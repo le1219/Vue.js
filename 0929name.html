@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>動態組件 預先定義好組件 再用component:is 達到視覺效果</h1>
+    <div id="app">
+        <my-first-component></my-first-component>
+        <!-- html跑不了 -->
+        <!-- <MyFirstComponent></MyFirstComponent>
+        <MyFirstComponent></MyFirstComponent> -->
+    </div>
+
+    <script>
+        //名字怎麼取
+
+
+        Vue.component('my-first-component', {
+            template: `
+                <h2>
+                    'my-first-component' //kebab-case
+                    </h2>
+            `,
+        });
+        // html上用不了 會自動變為kebab-case
+        // Vue.component('MyFirstComponent', {
+        //     template: `
+        //         <h2>
+        //             'MyFirstComponent' //camelCase<
+        //         /h2>
+        //     `,
+        // });
+        // Vue.component('MyFirstComponent', {
+        //     template: `
+        //         <h2>
+        //             'MyFirstComponent' //pascalCase//kebab-case
+        //         </h2>
+        //     `,
+        // });
+        new Vue({
+            el: '#app',
+        })
+
+
+    </script>
+</body>
+
+</html>

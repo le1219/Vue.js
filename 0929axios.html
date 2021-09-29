@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>結合主鍵-ToDoList</h1>
+    <div id="app">
+        <todo-list></todo-list>
+    </div>
+
+    <script>
+        Vue.component('todo-item', {
+            props: ['label'],
+            template: `<li>{{label}}</li>`
+        })
+        Vue.component('todo-input', {
+            data() {
+                return {
+                    text: '',
+                };
+            },
+            template: `
+            <form>
+            <input type="text" v-model="text">
+            <button type="submit">SUBMIT</button>
+            </form>`,
+        })
+        Vue.component('todo-list', {
+            data() {
+                return {
+                    todos: ['a', 'b'],
+                };
+            },
+            template: `<div>
+                        <todo-input></todo-input>
+                        <ul>
+                            <todo-item v-for="todo in todos" :label="todo"></todo-item>
+                        </ul>
+                     </div>`,
+        });
+        new Vue({
+            el: '#app',
+        })
+
+
+    </script>
+</body>
+
+</html>
