@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script>
+
+        //callback function
+
+        // $.getJSON('https://randomuser.me/api', function (data) {
+        //     console.log(data);
+        // });
+        //非同步
+        // $.ajax({
+        //     url: 'https://randomuser.me/api',
+        //     dataType: 'json',
+        //     success: function (data) {
+        //         console.log(data);
+        //     }
+        // });
+
+        //完整callback function 呼叫非同步函式
+        function getRandomEmail(callback) {
+            $.getJSON('https://randomuser.me/api', function (data) {
+                callback(data.result[0].email);
+            });
+        }
+        getRandomEmail(function (email) {
+            console.log(email);
+        })
+
+        //promise 是一個物件
+        function getRandomEmail() {
+            //promise(resolve,reject)
+            return new Promise(function (resolve) {
+                $.getJSON('https://randomuser.me/api', function (data) {
+                    callback(data.result[0].email);
+                });
+            })
+        }
+        const emails = [];
+
+        //async/ await ES8
+        getRandomEmail()
+            .then(function (email) {
+                emals.push(email);
+                return getRandomEmail();
+            })
+            .then(function (email) {
+                emals.push(email);
+                return getRandomEmail();
+            })
+            .then(function (email) {
+                emals.push(email);
+                return getRandomEmail();
+            })
+
+    </script>
+</body>
+
+</html>

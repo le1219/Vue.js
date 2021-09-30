@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>動態綁定prop</h1>
+    <div id="app">
+        <post v-for="post in posts" :text="post.text" :author="post.author"></post>
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                posts: [{
+                    text: 'hello',
+                    author: 'Elaine',
+                },
+                {
+                    text: 'world',
+                    author: 'LAI',
+                },
+                ],
+            },
+            components: {
+                post: {
+                    props: ['author', 'text'],
+                    template: '<div>{{author}} :{{text}}</div>'
+                },
+            },
+        });
+
+
+    </script>
+</body>
+
+</html>

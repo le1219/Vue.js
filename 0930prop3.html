@@ -15,23 +15,27 @@
 </head>
 
 <body>
-    <h1>上層傳來的prop</h1>
+    <h1>動態綁定prop</h1>
     <div id="app">
-        <!-- message prop屬性 -->
-        <my-component message="hello" test="test">
-
-        </my-component>
+        <count number="1"></count>
+        <!-- 11 因為字串相加 -->
+        <count :number="1"></count>
+        <!-- :動態綁定後就不會解讀為字串 -->
     </div>
 
     <script>
-        Vue.component('my-component', {
-            //prop是字串
-            props: ['message', 'test'],
-            template: '<h2>{{message}}{{test}}</h2>',
-        })
+
         new Vue({
             el: '#app',
-        })
+            components: {
+                count: {
+                    props: ['number'],
+                    template: '<div> {{number+1}}</div>'
+                }
+            },
+        });
+
+
     </script>
 </body>
 

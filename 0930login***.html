@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shorthand</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>結合axios製作登入</h1>
+    <div id="app">
+        <div>
+            <button @click="component='login-form'">LOIN FORM</button>
+            <button @click="component='user-check'">USER CHECK</button>
+        </div>
+        <hr>
+        <keep-alive>
+            <component :is="component"></component>
+        </keep-alive>
+
+        <!-- <login-form></login-form> -->
+
+
+    </div>
+    <script>
+        const API = 'https://login-backend-scars377.c9suers.io';
+        Vue.component('user-check', {
+            data() {
+                return {
+                    username: '',
+                    exists: false,
+                }
+            },
+            methods: {
+                submit() {
+                    axios.get(`${API}/exists/${this.username}`)
+                        .then(response => {
+                            this.exists = response.data.exists;
+                        });
+                },
+            },
+            watch: {
+                username() {
+                    this.submit();
+                },
+            },
+            created() {
+                // debounce 吃兩個參數（函式,過多久後執行）
+                this.submitDebounced = _.debounce(this.submit, 200)
+            },
+            template: `
+            <div>
+                    <label>USERNAM</label>
+                    <input type="text" v-model="username">
+                    <br>
+                    <span>{{exists}}</span>
+                    </div>
+                    `,
+        })
+
+        Vue.component('login-form', {
+            data() {
+                return {
+                    username: "",
+                    password: "",
+                    loggeUser: null,
+                    error: "",
+                    loading: false,
+                }
+            },
+            methods: {
+                submit() {
+                    this.loading = true;
+                    axios.post(`${API}/login`, {
+                        username: this.username,
+                        password: this.password,
+                    })
+
+                        .then(response => {
+                            this.loading = false;
+                            //response.data 伺服器回傳的資料
+                            if (response.data.success) {
+                                this.loggeUser = response.data.name;
+                            } else {
+                                this.error = 'INcorrect username/password';
+                            }
+                        })
+                },
+            },
+            watch: {
+                username() {
+                    this.error = "";
+                },
+                password() {
+                    this.errpr = "";
+                },
+            },
+            template: `
+            <div>
+                <h1 v-if="loggeUser">WELCOME {{loggeduser}}</h1>
+                    <form v-else @submit.prevent="submit">
+                            <label>USERNAME</label>
+                            <input type="text" v-model="username" :disabled="loading">
+                            <br>
+                            <label>PASSWORD</label>
+                            <input type="password" v-model="password" :disabled="loading">
+                            <br>
+                            <button type="submit" :disabled="loading">SUBMIT</button>
+                            <span v-if="error">{{error}}</span>
+                     </form>
+                     </div>`,
+        });
+        new Vue({
+            el: '#app',
+            data: {
+                component: 'login-form',
+            }
+        })
+
+
+    </script>
+</body>
+
+</html>
