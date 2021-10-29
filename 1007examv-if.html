@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="hi">{{message}}</div>
+        <div v-if="loading">loading失敗</div>
+    </div>
+    <div id="app2">
+        <hr>
+        <div class="exam">what is your score
+        </div>
+        <p>PLEASE KEY IN YOUR SCORE</p>
+        <input type="text" v-model="score">
+        <div v-if="score>=60">PASS</div>
+        <div v-else="score<60">FAILD</div>
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'helloworld!',
+                // if = false所以沒顯示 true才會 懂元素也不會出現
+                //v-show就會出現在動元素
+                loading: false,
+            }
+        });
+        new Vue({
+            el: '#app2',
+            data: {
+                score: 0,
+            }
+        });
+    </script>
+</body>
+
+</html>

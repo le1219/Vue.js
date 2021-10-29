@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>NOW TIME:{{now}}</h1>
+        <br>
+        <h6>A IS</h6>
+        <input type="text" v-model="a">
+        <h6>B IS</h6>
+        <input type="text" v-model="b">
+    </div>
+    <div id="app2">
+        <h1>NOW TIME:{{now}}</h1>
+        <br>
+        <h6>A IS</h6>
+        <input type="text" v-model="a">
+        <h6>B IS</h6>
+        <input type="text" v-model="b">
+    </div>
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                a: 0,
+                b: 0,
+            },
+            // 即時運算都會放在computed
+            computed: {
+                now: function () {
+                    let total = this.a + this.b;
+                    var d = new Date();
+                    return d.getSeconds()
+                }
+            }
+        });
+
+    </script>
+</body>
+
+</html>

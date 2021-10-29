@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <h1 id="hello"></h1>
+    <div id="app">
+        {{message}}
+        <hr>
+        <input type="text" v-model="nt">
+        <h2>日幣:{{japan}}</h2>
+        <hr>
+        <h2>$50台幣兌換港幣為:{{dollar/3.7}}</h2>
+        <h2>$50台幣兌換美金為:{{dollar/30}}</h2>
+        <h2>$50台幣兌換日幣為:{{dollar*3}}</h2>
+        <h2>$50台幣兌換韓幣為:{{dollar*40}}</h2>
+        <h2>$50台幣兌換澳幣為:{{dollar/5}}</h2>
+        <input type="text" v-model="enter">
+        <h2>台幣兌換港幣為:{{enter/3.7}}</h2>
+        <h2>台幣兌換美金為:{{enter/30}}</h2>
+        <h2>台幣兌換日幣為:{{enter*3}}</h2>
+        <h2>台幣兌換韓幣為:{{enter*40}}</h2>
+        <h2>台幣兌換澳幣為:{{enter*5}}</h2>
+    </div>
+
+    <script>
+        // textContent
+        document.getElementById('hello').textContent = "HELLO WORLD";
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'helloworld! Vue.js綁定',
+                dollar: 50,
+                enter: 0,
+                nt: 0,
+            },
+            computed: {
+                japan: function () {
+                    return this.nt * 3
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

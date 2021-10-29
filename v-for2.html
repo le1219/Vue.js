@@ -23,6 +23,7 @@
         <button @click="all">all</button>
         <button @click="even">even</button>
         <button @click="sort">sort</button>
+        <p v-for="(aaa, index) in aa" :key="index">{{ aaa }}</p>
     </div>
 
 
@@ -32,6 +33,7 @@
             el: '#app',
             data: {
                 nums: orgNums,
+                aa: ['aa', 'dd', 'ss', 4, 512, 512]
             },
             methods: {
                 even() {

@@ -24,6 +24,12 @@
             <h1>努力每一天</h1>
             <h4>努力每一天</h4>
             <h5>努力每一天</h5>
+            <div class="big" style="width: 200px; height: 200px;background-color: beige;" :bind="click"></div>
+            <div style="background-color: aliceblue;width: 100px;height: 100px;" @click="color=1"></div>
+            <div style="background-color: rgb(95, 125, 184);width: 100px;height: 100px;" @click="color=2"></div>
+            <div style="background-color: rgb(173, 216, 94);width: 100px;height: 100px;" @click="color=2"></div>
+            <div style="background-color: rgb(128, 56, 146);width: 100px;height: 100px;" @click="color=4"></div>
+
         </template>
     </div>
 
@@ -33,6 +39,7 @@
             el: '#app',
             data: {
                 checked: false,
+                color: 1,
             },
 
         })

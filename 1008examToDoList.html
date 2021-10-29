@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>WHAT YOU WANT TO DO?</h1>
+        <input type="text" placeholder="KEIN" @keyup.enter="addToDo(newTodo)" v-model="newTodo">
+        <ul>
+            <li v-for="(todo,idx) in todos">{{todo.content}}--
+                <a href="#" @click.prevent="removeToDo(idx)">刪除</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                todos: [],
+                newTodo: ''
+
+            },
+            methods: {
+                addToDo: function (todo) {
+                    this.todos.push({ content: todo, completed: false });
+                },
+                removeToDo: function (todo) {
+                    this.todos.splice(this.todos.indexOf(todo), 1);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

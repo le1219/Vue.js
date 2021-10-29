@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VUE v-scroll練習</title>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+    <style>
+        body {
+            height: 1500px;
+        }
+
+        #app {
+            width: 500px;
+            margin: 500px auto;
+        }
+
+        .centered {
+            text-align: center;
+        }
+
+        .box {
+            opacity: 0;
+            transition: 1.5s all cubic-bezier(0.39, 0.575, 0.565, 1);
+            margin-top: 30px;
+        }
+
+        p {
+            line-height: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- VUE v-scroll練習  -->
+    <div id="app">
+        <h1 class="centered">Scroll me</h1>
+        <div class="box" v-scroll="handleScroll">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A atque amet harum aut ab veritatis earum porro
+                praesentium ut corporis. Quasi provident dolorem officia iure fugiat, eius mollitia sequi quisquam.lorem
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur quisquam laudantium odit sit.
+                Quaerat, nemo rerum dolorem doloremque quas commodi sed aperiam mollitia in! Facilis ducimus magni
+                perspiciatis perferendis accusantium.
+                Nulla, amet maxime? A harum excepturi, quam minus numquam vel quia quas eligendi facilis reprehenderit
+                neque velit debitis sint quibusdam itaque officiis quidem illum saepe non? Debitis earum fugit velit.
+                Similique fuga sit, vero quisquam quasi eos magni quod animi at odit ipsum modi porro laboriosam, soluta
+                recusandae perferendis cumque aliquam nostrum, temporibus obcaecati magnam velit? Nesciunt placeat natus
+                repellendus.</p>
+        </div>
+    </div>
+
+    <script>
+        Vue.directive('scroll', {
+            inserted: function (el, binding) {
+                let f = function (evt) {
+                    if (binding.value(evt, el)) {
+                        window.removeEventListener('scroll', f);
+                    }
+
+                };
+                window.addEventListener('scroll', f);
+            },
+        });
+
+        // main app
+        new Vue({
+            el: '#app',
+            methods: {
+                handleScroll: function (evt, el) {
+                    console.log(213);
+                    if (window.scrollY > 400) {
+                        console.log(window.scrollY);
+                        el.setAttribute("style", "opacity: 1; transform: translateX(0, -50px, 0)")
+                    }
+                    else {
+                        el.setAttribute("style", "opacity: 0; transform: translate3d(0, 0px, 0)")
+                    }
+                    // return window.scrollY > 100;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
